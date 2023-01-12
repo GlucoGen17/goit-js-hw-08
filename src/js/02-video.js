@@ -5,10 +5,9 @@ const iframe = document.querySelector('iframe');
 const player = new Vimeo.Player(iframe);
 const KEY_PLAY_TIME = 'videoplayer-current-time';
     
-    player.on('play', function() {
-        console.log('played the video!');
-    });
+player.on('timeupdate', throttle(onTime, 1000));
 
-    player.getVideoTitle().then(function(title) {
-        console.log('title:', title);
-    });
+function onTime(currentTime) {
+    localStorage.setItem(KEY_STORAGE, JSON.stringify(currentTime.seconds));
+    };
+
