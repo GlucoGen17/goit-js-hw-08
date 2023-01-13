@@ -9,4 +9,12 @@ let formData = {};
 form.addEventListener('input', throttle(onFormInput, 500));
 form.addEventListener('submit', onFormSubmit);
 
+function onFormSubmit(e) {
+  e.preventDefault();
+  localStorage.removeItem(KEY_STORAGE);
+  e.currentTarget.reset();
+}
+
+
+
 
