@@ -13,15 +13,14 @@ function onFormSubmit(e) {
   e.currentTarget.reset();
 }
 
-function onFormInput(e) { 
+function onFormInput(e) {
 formData[e.target.name] = e.target.value;
 localStorage.setItem(KEY_STORAGE, JSON.stringify(formData));
 }
 
-
 function populateTextarea() {
     let formData = localStorage.getItem(KEY_STORAGE);
-    if (formData) {
+    if (formData !== null) {
         try {
             formData = JSON.parse(formData);
             form.elements.email.value = formData.email;
