@@ -18,6 +18,7 @@ formData[e.target.name] = e.target.value;
 localStorage.setItem(KEY_STORAGE, JSON.stringify(formData));
 }
 
+
 function populateTextarea() {
     let formData = localStorage.getItem(KEY_STORAGE);
     if (formData) {
