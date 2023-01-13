@@ -20,7 +20,7 @@ localStorage.setItem(KEY_STORAGE, JSON.stringify(formData));
 
 function populateTextarea() {
     let formData = localStorage.getItem(KEY_STORAGE);
-    if (formData !== null) {
+    if (formData === null) {
         try {
             formData = JSON.parse(formData);
             form.elements.email.value = formData.email;
@@ -33,3 +33,4 @@ function populateTextarea() {
             console.error(error);
         }
     }
+}
