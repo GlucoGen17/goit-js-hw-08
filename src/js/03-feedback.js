@@ -21,11 +21,12 @@ function onFormInput(e) {
 
 function populateTextarea() {
   let formData = localStorage.getItem(KEY_STORAGE);
-  if (formData !== null) {
+  if (formData) {
     try {
       formData = JSON.parse(formData);
-      form.elements.email.value = formData.email;
-      form.elements.message.value = formData.message;
+      Object.entries(formData).forEach(([name, value]) => {
+        form.elements[name].value = value;
+      });
     } catch (error) {
       console.error(
         'Error: invalid saved form state in LocalStorage!' + KEY_STORAGE
