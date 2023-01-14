@@ -11,26 +11,26 @@ function onFormSubmit(e) {
   e.preventDefault();
   localStorage.removeItem(KEY_STORAGE);
   e.currentTarget.reset();
+  console.log(form.elements.email.value, form.elements.message.value);
 }
 
 function onFormInput(e) {
-formData[e.target.name] = e.target.value;
-localStorage.setItem(KEY_STORAGE, JSON.stringify(formData));
+  formData[e.target.name] = e.target.value;
+  localStorage.setItem(KEY_STORAGE, JSON.stringify(formData));
 }
 
 function populateTextarea() {
-    let formData = localStorage.getItem(KEY_STORAGE);
-    if (formData !== null) {
-        try {
-            formData = JSON.parse(formData);
-            form.elements.email.value = formData.email;
-            form.elements.message.value = formData.message;
-        }
-        catch (error) {
-            console.error(
-                'Error: invalid saved form state in LocalStorage!' + KEY_STORAGE
-            );
-            console.error(error);
-        }
+  let formData = localStorage.getItem(KEY_STORAGE);
+  if (formData !== null) {
+    try {
+      formData = JSON.parse(formData);
+      form.elements.email.value = formData.email;
+      form.elements.message.value = formData.message;
+    } catch (error) {
+      console.error(
+        'Error: invalid saved form state in LocalStorage!' + KEY_STORAGE
+      );
+      console.error(error);
     }
+  }
 }
